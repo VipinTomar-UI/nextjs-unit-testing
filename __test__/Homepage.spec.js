@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import HomePage from "../src/app/page";
 
 describe("Homepage", () => {
@@ -15,6 +15,12 @@ describe("Homepage", () => {
     render(<HomePage />);
 
     const element = screen.getByRole("paragraph");
+    const incrementBtn = screen.getByRole("button", { name: "Increment" });
+    fireEvent.click(incrementBtn);
+
+    const decrementBtn = screen.getByRole("button", { name: "Decrement" });
+    fireEvent.click(decrementBtn);
+
     expect(element).toBeInTheDocument();
   });
 });

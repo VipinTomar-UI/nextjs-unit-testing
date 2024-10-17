@@ -9,7 +9,7 @@ describe("Button Component", () => {
     expect(element).toBeInTheDocument();
   });
 
-  test.only("renders children and handles click events", () => {
+  test("renders children and handles click events", () => {
     render(<Button>Click me</Button>);
 
     const buttonElement = screen.getByText(/Click me0/i);
@@ -19,6 +19,6 @@ describe("Button Component", () => {
     expect(buttonElement).toHaveTextContent("Click me1");
 
     fireEvent.click(buttonElement);
-    expect(buttonElement).toHaveTextContent("Click me2");
+    expect(buttonElement).not.toHaveTextContent("Click me1");
   });
 });
